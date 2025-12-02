@@ -317,6 +317,15 @@
     <string name="kpm_autoload_save_confirm">Save auto-load configuration?</string>
     <string name="kpm_autoload_save_success">Configuration saved successfully</string>
     <string name="kpm_autoload_save_failed">Failed to save configuration</string>
+    <string name="kpm_autoload_visual_mode">Visual Mode</string>
+    <string name="kpm_autoload_json_mode">JSON Mode</string>
+    <string name="kpm_autoload_add_kpm">Add KPM</string>
+    <string name="kpm_autoload_remove_kpm">Remove</string>
+    <string name="kpm_autoload_kpm_list_title">KPM Modules</string>
+    <string name="kpm_autoload_no_kpm_added">No KPM modules added</string>
+    <string name="kpm_autoload_kpm_path">KPM Path</string>
+    <string name="kpm_autoload_file_not_found">File not found</string>
+    <string name="kpm_autoload_select_kpm_file">Select KPM File</string>
 
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Hide su executable path</string>

@@ -274,4 +274,13 @@
     <string name="kpm_autoload_save_confirm">自動読み込み設定を保存しますか？</string>
     <string name="kpm_autoload_save_success">設定が正常に保存されました</string>
     <string name="kpm_autoload_save_failed">設定の保存に失敗しました</string>
+    <string name="kpm_autoload_visual_mode">ビジュアルモード</string>
+    <string name="kpm_autoload_json_mode">JSONモード</string>
+    <string name="kpm_autoload_add_kpm">KPMを追加</string>
+    <string name="kpm_autoload_remove_kpm">削除</string>
+    <string name="kpm_autoload_kpm_list_title">KPMモジュールリスト</string>
+    <string name="kpm_autoload_no_kpm_added">KPMモジュールが追加されていません</string>
+    <string name="kpm_autoload_kpm_path">KPMパス</string>
+    <string name="kpm_autoload_file_not_found">ファイルが見つかりません</string>
+    <string name="kpm_autoload_select_kpm_file">KPMファイルを選択</string>
 </resources>

@@ -499,19 +499,19 @@ private fun TopBar(navigator: DestinationsNavigator) {
         title = { Text(stringResource(R.string.kpm)) },
         actions = {
             IconButton(onClick = {
-                navigator.navigate(KpmAutoLoadConfigScreenDestination)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(R.string.kpm_autoload_title)
-                )
-            }
-            IconButton(onClick = {
                 navigator.navigate(OnlineKPMScreenDestination)
             }) {
                 Icon(
                     imageVector = Icons.Filled.Download,
                     contentDescription = "Online KPM"
+                )
+            }
+            IconButton(onClick = {
+                navigator.navigate(KpmAutoLoadConfigScreenDestination)
+            }) {
+                Icon(
+                    imageVector = Icons.Filled.Settings,
+                    contentDescription = stringResource(R.string.kpm_autoload_title)
                 )
             }
         }

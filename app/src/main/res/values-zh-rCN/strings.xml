@@ -320,4 +320,13 @@
     <string name="kpm_autoload_save_confirm">保存自动加载配置？</string>
     <string name="kpm_autoload_save_success">配置保存成功</string>
     <string name="kpm_autoload_save_failed">配置保存失败</string>
+    <string name="kpm_autoload_visual_mode">可视化模式</string>
+    <string name="kpm_autoload_json_mode">JSON模式</string>
+    <string name="kpm_autoload_add_kpm">添加KPM</string>
+    <string name="kpm_autoload_remove_kpm">删除</string>
+    <string name="kpm_autoload_kpm_list_title">KPM模块列表</string>
+    <string name="kpm_autoload_no_kpm_added">未添加KPM模块</string>
+    <string name="kpm_autoload_kpm_path">KPM路径</string>
+    <string name="kpm_autoload_file_not_found">文件未找到</string>
+    <string name="kpm_autoload_select_kpm_file">选择KPM文件</string>
 </resources>

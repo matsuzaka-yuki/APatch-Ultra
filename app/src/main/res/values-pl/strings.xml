@@ -311,6 +311,15 @@
     <string name="kpm_autoload_save_confirm">Zapisać konfigurację automatycznego ładowania?</string>
     <string name="kpm_autoload_save_success">Konfiguracja zapisana pomyślnie</string>
     <string name="kpm_autoload_save_failed">Nie udało się zapisać konfiguracji</string>
+    <string name="kpm_autoload_visual_mode">Tryb wizualny</string>
+    <string name="kpm_autoload_json_mode">Tryb JSON</string>
+    <string name="kpm_autoload_add_kpm">Dodaj KPM</string>
+    <string name="kpm_autoload_remove_kpm">Usuń</string>
+    <string name="kpm_autoload_kpm_list_title">Lista modułów KPM</string>
+    <string name="kpm_autoload_no_kpm_added">Nie dodano żadnych modułów KPM</string>
+    <string name="kpm_autoload_kpm_path">Ścieżka KPM</string>
+    <string name="kpm_autoload_file_not_found">Nie znaleziono pliku</string>
+    <string name="kpm_autoload_select_kpm_file">Wybierz plik KPM</string>
 
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Ukryj ścieżkę pliku wykonywalnego su</string>
