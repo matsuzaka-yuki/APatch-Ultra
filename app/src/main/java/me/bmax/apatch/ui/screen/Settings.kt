@@ -1,5 +1,6 @@
 package me.bmax.apatch.ui.screen
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -26,6 +27,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AspectRatio
 import androidx.compose.material.icons.filled.BugReport
 import androidx.compose.material.icons.filled.ColorLens
 import androidx.compose.material.icons.filled.Commit
@@ -661,6 +663,32 @@ fun SettingScreen() {
                     })
             }
 
+            // DPI Settings
+            val showDpiDialog = remember { mutableStateOf(false) }
+            ListItem(
+                headlineContent = { Text(stringResource(id = R.string.settings_app_dpi)) },
+                modifier = Modifier.clickable {
+                    showDpiDialog.value = true
+                },
+                supportingContent = {
+                    val currentDpi = me.bmax.apatch.util.DPIUtils.currentDpi
+                    val dpiText = if (currentDpi == -1) {
+                        stringResource(id = R.string.system_default)
+                    } else {
+                        "$currentDpi DPI"
+                    }
+                    Text(
+                        text = dpiText,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.outline
+                    )
+                },
+                leadingContent = { Icon(Icons.Filled.AspectRatio, null) }
+            )
+            if (showDpiDialog.value) {
+                DpiChooseDialog(showDpiDialog)
+            }
+
             // language
             ListItem(headlineContent = {
                 Text(text = stringResource(id = R.string.settings_app_language))
@@ -1047,6 +1075,45 @@ fun LanguageDialog(showLanguageDialog: MutableState<Boolean>) {
         }
     }
 }
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DpiChooseDialog(showDialog: MutableState<Boolean>) {
+    val context = LocalContext.current
+    val activity = context as? Activity
+
+    BasicAlertDialog(
+        onDismissRequest = { showDialog.value = false }, properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(310.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(30.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            LazyColumn {
+                items(me.bmax.apatch.util.DPIUtils.presets) { preset ->
+                    ListItem(
+                        headlineContent = { Text(text = preset.name) },
+                        modifier = Modifier.clickable {
+                            showDialog.value = false
+                            me.bmax.apatch.util.DPIUtils.setDpi(context, preset.value)
+                            // Restart activity to apply changes
+                            activity?.recreate()
+                        })
+                }
+            }
+
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            APDialogBlurBehindUtils.setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun IconChooseDialog(showDialog: MutableState<Boolean>) {

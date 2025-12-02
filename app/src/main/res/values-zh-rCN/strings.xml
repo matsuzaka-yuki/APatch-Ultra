@@ -270,7 +270,7 @@
     <string name="app_title_folkpatch">FolkPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
 
-    <!-- Settings Strings -->
+    <string name="settings_app_dpi">应用 DPI</string>
     <string name="settings_lite_mode">精简模式</string>
     <string name="settings_lite_mode_mode_summary">启用精简模式以获得更好的性能</string>
     <string name="settings_force_overlayfs_mode">强制 OverlayFS 模式</string>

@@ -234,7 +234,7 @@
     <string name="app_title_folkpatch">FolkPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
 
-    <!-- Settings Strings -->
+    <string name="settings_app_dpi">アプリの DPI</string>
     <string name="settings_lite_mode">ライトモード</string>
     <string name="settings_lite_mode_mode_summary">パフォーマンス向上のためライトモードを有効にする</string>
     <string name="settings_force_overlayfs_mode">強制OverlayFSモード</string>

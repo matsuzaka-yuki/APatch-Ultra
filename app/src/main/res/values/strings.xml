@@ -274,7 +274,7 @@
     <string name="app_title_folkpatch">FolkPatch</string>
     <string name="app_title_kernelpatch">KernelPatch</string>
 
-    <!-- Settings Strings -->
+    <string name="settings_app_dpi">App DPI</string>
     <string name="settings_lite_mode">Lite Mode</string>
     <string name="settings_lite_mode_mode_summary">Enable lite mode for better performance</string>
     <string name="settings_force_overlayfs_mode">Force OverlayFS Mode</string>

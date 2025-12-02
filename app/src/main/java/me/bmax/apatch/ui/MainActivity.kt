@@ -63,6 +63,10 @@ class MainActivity : AppCompatActivity() {
     private var isLoading = true
     private lateinit var permissionHandler: PermissionRequestHandler
 
+    override fun attachBaseContext(newBase: android.content.Context) {
+        super.attachBaseContext(me.bmax.apatch.util.DPIUtils.updateContext(newBase))
+    }
+
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -77,6 +81,10 @@ class MainActivity : AppCompatActivity() {
         
         // 初始化权限处理器
         permissionHandler = PermissionRequestHandler(this)
+        
+        // Load DPI settings
+        me.bmax.apatch.util.DPIUtils.load(this)
+        me.bmax.apatch.util.DPIUtils.applyDpi(this)
         
         // 检查并请求权限
         if (!PermissionUtils.hasExternalStoragePermission(this) || 
