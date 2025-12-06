@@ -322,4 +322,15 @@
     <string name="apm_bulk_install_log_done">すべての操作が完了しました。</string>
     <string name="apm_bulk_install_first_use_text">この機能では、複数のモジュールを一度にインストールできます。これはクイックインストール方法で、インストール中にキー操作を伴わないモジュールに適しています。音量キー操作が必要なモジュールは、標準インストールを使用してください。</string>
     <string name="apm_bulk_install_remove">削除</string>
+    <string name="apm_first_use_title">システムモジュールへようこそ</string>
+    <string name="apm_first_use_text">システムモジュールへようこそ。ここではMagiskエコシステムと互換性のあるモジュールを使用しています。将来的にはLuaモジュールのサポートが追加される可能性があります。右下のボタンをクリックしてモジュールをインストールできます。また、上部のインストーラを使用してモジュールを一括インストールすることもできます。すべてのモジュールをワンクリックでバックアップする機能も提供されていますが、この方法がすべてのモジュールに適しているとは限らないので、ご自身でバックアップを作成してください。</string>
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">モジュールのバックアップ</string>
+    <string name="apm_restore_title">モジュールの復元</string>
+    <string name="apm_backup_success">バックアップに成功しました</string>
+    <string name="apm_restore_success">復元に成功しました</string>
+    <string name="apm_backup_failed">バックアップに失敗しました</string>
+    <string name="apm_restore_failed">復元に失敗しました</string>
+    <string name="apm_backup_failed_msg">バックアップに失敗しました: %s</string>
+    <string name="apm_restore_failed_msg">復元に失敗しました: %s</string>
 </resources>

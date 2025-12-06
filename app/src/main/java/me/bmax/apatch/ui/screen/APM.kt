@@ -29,6 +29,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.AlertDialogDefaults
+import androidx.compose.material3.BasicAlertDialog
+import androidx.compose.material3.Button
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FloatingActionButton
@@ -56,6 +60,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -102,12 +107,27 @@ import androidx.compose.material.icons.automirrored.filled.PlaylistAdd
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DeleteSweep
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.MoreVert
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
+import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenuItem
+import me.bmax.apatch.util.ModuleBackupUtils
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Destination<RootGraph>
 @Composable
 fun APModuleScreen(navigator: DestinationsNavigator) {
     val snackBarHost = LocalSnackbarHost.current
     val context = LocalContext.current
+
+    // First use dialog state
+    val prefs = remember { APApplication.sharedPreferences }
+    var showFirstTimeDialog by remember { 
+        mutableStateOf(!prefs.getBoolean("apm_first_use_shown", false)) 
+    }
+    var dontShowAgain by remember { mutableStateOf(false) }
 
     val state by APApplication.apStateLiveData.observeAsState(APApplication.State.UNKNOWN_STATE)
     if (state != APApplication.State.ANDROIDPATCH_INSTALLED && state != APApplication.State.ANDROIDPATCH_NEED_UPDATE) {
@@ -162,7 +182,7 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
 
     Scaffold(
         topBar = {
-        TopBar(navigator, viewModel)
+        TopBar(navigator, viewModel, snackBarHost)
     }, floatingActionButton = if (hideInstallButton) {
         { /* Empty */ }
     } else {
@@ -259,6 +279,76 @@ fun APModuleScreen(navigator: DestinationsNavigator) {
                     snackBarHost = snackBarHost,
                     context = context
                 )
+            }
+        }
+    }
+
+    // First Use Dialog
+    if (showFirstTimeDialog) {
+        BasicAlertDialog(
+            onDismissRequest = {
+                if (dontShowAgain) {
+                    prefs.edit().putBoolean("apm_first_use_shown", true).apply()
+                }
+                showFirstTimeDialog = false
+            },
+            properties = DialogProperties(
+                dismissOnClickOutside = false,
+                dismissOnBackPress = false
+            )
+        ) {
+            Surface(
+                modifier = Modifier
+                    .width(350.dp)
+                    .padding(16.dp),
+                shape = RoundedCornerShape(20.dp),
+                tonalElevation = AlertDialogDefaults.TonalElevation,
+                color = AlertDialogDefaults.containerColor,
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    Text(
+                        text = stringResource(R.string.apm_first_use_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.padding(bottom = 16.dp)
+                    )
+                    
+                    Text(
+                        text = stringResource(R.string.apm_first_use_text),
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Checkbox(
+                            checked = dontShowAgain,
+                            onCheckedChange = { dontShowAgain = it }
+                        )
+                        Text(
+                            text = stringResource(R.string.kpm_autoload_do_not_show_again),
+                            style = MaterialTheme.typography.bodySmall,
+                            modifier = Modifier.padding(start = 8.dp)
+                        )
+                    }
+                    
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        Button(onClick = {
+                            if (dontShowAgain) {
+                                prefs.edit().putBoolean("apm_first_use_shown", true).apply()
+                            }
+                            showFirstTimeDialog = false
+                        }) {
+                            Text(stringResource(R.string.kpm_autoload_first_time_confirm))
+                        }
+                    }
+                }
             }
         }
     }
@@ -488,16 +578,34 @@ private fun ModuleList(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewModel) {
+private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewModel, snackBarHost: SnackbarHostState) {
     val confirmDialog = rememberConfirmDialog()
     val scope = rememberCoroutineScope()
     val disableAllTitle = stringResource(R.string.apm_disable_all_title)
     val disableAllConfirm = stringResource(R.string.apm_disable_all_confirm)
     val confirm = stringResource(android.R.string.ok)
     val cancel = stringResource(android.R.string.cancel)
+    val context = LocalContext.current
 
     var showDisableAllButton by remember {
         mutableStateOf(APApplication.sharedPreferences.getBoolean("show_disable_all_modules", false))
+    }
+    var showMenu by remember { mutableStateOf(false) }
+
+    val backupLauncher = rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/gzip")) { uri ->
+        uri?.let {
+            scope.launch {
+                ModuleBackupUtils.backupModules(context, snackBarHost, it)
+            }
+        }
+    }
+    val restoreLauncher = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        uri?.let {
+            scope.launch {
+                ModuleBackupUtils.restoreModules(context, snackBarHost, it)
+                viewModel.fetchModuleList()
+            }
+        }
     }
 
     DisposableEffect(Unit) {
@@ -550,6 +658,30 @@ private fun TopBar(navigator: DestinationsNavigator, viewModel: APModuleViewMode
                     imageVector = Icons.AutoMirrored.Filled.PlaylistAdd,
                     contentDescription = "Bulk Install"
                 )
+            }
+            
+            androidx.compose.material3.IconButton(onClick = { showMenu = true }) {
+                Icon(Icons.Filled.MoreVert, contentDescription = "More")
+                WallpaperAwareDropdownMenu(
+                    expanded = showMenu,
+                    onDismissRequest = { showMenu = false }
+                ) {
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(R.string.apm_backup_title)) },
+                        onClick = {
+                            showMenu = false
+                            val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+                            backupLauncher.launch("FolkPatch_Modules_Backup_$timeStamp.tar.gz")
+                        }
+                    )
+                    WallpaperAwareDropdownMenuItem(
+                        text = { Text(stringResource(R.string.apm_restore_title)) },
+                        onClick = {
+                            showMenu = false
+                            restoreLauncher.launch(arrayOf("application/gzip", "application/x-gzip", "application/x-tar"))
+                        }
+                    )
+                }
             }
         }
     )
@@ -708,4 +840,6 @@ private fun ModuleItem(
             }
         }
     }
+
+
 }

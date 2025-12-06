@@ -353,4 +353,15 @@
     <string name="apm_bulk_install_log_done">所有操作已完成。</string>
     <string name="apm_bulk_install_first_use_text">這個功能允許你一次性刷入多個模組,屬於快速刷入,適合刷一些過程中沒有涉及按鍵操作的模組,涉及點按音量鍵等操作的請使用普通刷入</string>
     <string name="apm_bulk_install_remove">移除</string>
+    <string name="apm_first_use_title">歡迎使用系統模組</string>
+    <string name="apm_first_use_text">歡迎使用系統模組，這裡使用的是相容Magisk生態的模組，未來可能會加入對Lua模組的支援，點擊右下角的按鈕可以安裝模組，你也可以使用頂部的安裝器批量安裝模組，還提供了一個功能一鍵備份全部模組，但是注意這種方案不一定適用全部模組，還是自己多加備份</string>
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">備份模組</string>
+    <string name="apm_restore_title">還原模組</string>
+    <string name="apm_backup_success">備份成功</string>
+    <string name="apm_restore_success">還原成功</string>
+    <string name="apm_backup_failed">備份失敗</string>
+    <string name="apm_restore_failed">還原失敗</string>
+    <string name="apm_backup_failed_msg">備份失敗：%s</string>
+    <string name="apm_restore_failed_msg">還原失敗：%s</string>
 </resources>

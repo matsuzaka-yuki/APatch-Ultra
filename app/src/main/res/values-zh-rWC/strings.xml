@@ -46,7 +46,7 @@
     <string name="home_install_unknown">未入仙门或未验仙籍</string>
     <string name="home_install_unknown_summary">点触引仙入道</string>
     <string name="home_click_to_install">点触引仙入道</string>
-    <string name="home_working">施法中</string>
+    <string name="home_working">闭关修炼中</string>
     <string name="home_kp_need_update">有仙法新篇可用</string>
     <string name="home_kp_cando_update">渡劫升仙</string>
 
@@ -360,7 +360,18 @@
     <string name="apm_bulk_install_log_done">诸渡劫事了。</string>
     <string name="apm_bulk_install_first_use_text">此仙能可令汝一次性引多枚仙符，此乃速引之法，宜用引符时不涉音量仙键之仙符。若涉音量仙键之操作，请用常引之法。</string>
     <string name="apm_bulk_install_remove">除</string>
+    <string name="apm_first_use_title">欢迎使用天道仙符</string>
+    <string name="apm_first_use_text">欢迎使用天道仙符，此地所用乃Magisk仙阵兼容之仙符，将来或加Lua仙符之容，右下之钮可引仙符，亦可引顶部之仙器批量引符，又有一键备份所有仙符之能，然此法未必适所有仙符，汝当多加备份</string>
 
     <string name="kpm_page_first_time_title">渡劫警言</string>
     <string name="kpm_page_first_time_message">道核仙符者，直改仙躯Boot之法也，不若天道仙符有救砖之策，有天劫则唯入Fastboot仙台修之。宜先引符入道，无天劫再嵌于仙躯Boot。若仙符唯可引符用之，可试自动道核仙符引符之能。若未谙道核仙符，毋用此渡劫之能！</string>
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">拓印灵纹</string>
+    <string name="apm_restore_title">重塑灵纹</string>
+    <string name="apm_backup_success">拓印圆满</string>
+    <string name="apm_restore_success">重塑圆满</string>
+    <string name="apm_backup_failed">拓印受阻</string>
+    <string name="apm_restore_failed">重塑受阻</string>
+    <string name="apm_backup_failed_msg">拓印受阻：%s</string>
+    <string name="apm_restore_failed_msg">重塑受阻：%s</string>
 </resources>

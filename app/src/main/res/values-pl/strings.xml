@@ -356,6 +356,8 @@
     <string name="apm_bulk_install_log_done">Wszystkie operacje zakończone.</string>
     <string name="apm_bulk_install_first_use_text">Ta funkcja pozwala na zainstalowanie wielu modułów naraz. Jest to szybka metoda instalacji, odpowiednia dla modułów, które podczas instalacji nie wymagają operacji na klawiszach. Dla modułów wymagających interakcji z klawiszami głośności, proszę użyć standardowej instalacji.</string>
     <string name="apm_bulk_install_remove">Usuń</string>
+    <string name="apm_first_use_title">Witaj w modułach systemowych</string>
+    <string name="apm_first_use_text">Witaj w modułach systemowych, tutaj używane są moduły kompatybilne z ekosystemem Magisk. W przyszłości może zostać dodane wsparcie dla modułów Lua. Kliknij przycisk w prawym dolnym rogu, aby zainstalować moduły. Możesz również użyć instalatora na górze, aby zainstalować moduły hurtowo. Dostępna jest również funkcja tworzenia kopii zapasowej wszystkich modułów jednym kliknięciem, ale pamiętaj, że to rozwiązanie może nie być odpowiednie dla wszystkich modułów, więc warto robić własne kopie zapasowe.</string>
 
     <!-- Hide Settings Strings -->
     <string name="home_hide_su_path">Ukryj ścieżkę pliku wykonywalnego su</string>
@@ -367,4 +369,13 @@
 
     <string name="kpm_page_first_time_title">Ostrzeżenie</string>
     <string name="kpm_page_first_time_message">Moduły jądra bezpośrednio modyfikują implementację rozruchu (Boot). W przeciwieństwie do modułów systemowych, nie posiadają one dobrego mechanizmu ratunkowego. Jeśli pojawią się problemy, można je naprawić tylko wchodząc w tryb Fastboot. Zaleca się najpierw załadować moduł, aby upewnić się, że nie ma problemów przed osadzeniem go w Boot. Jeśli moduł może być używany tylko przez ładowanie, możesz wypróbować funkcję automatycznego ładowania modułów KPM. Jeśli nie rozumiesz modułów jądra, nie używaj tej funkcji!</string>
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">Kopia zapasowa modułów</string>
+    <string name="apm_restore_title">Przywróć moduły</string>
+    <string name="apm_backup_success">Kopia zapasowa zakończona sukcesem</string>
+    <string name="apm_restore_success">Przywracanie zakończone sukcesem</string>
+    <string name="apm_backup_failed">Kopia zapasowa nieudana</string>
+    <string name="apm_restore_failed">Przywracanie nieudane</string>
+    <string name="apm_backup_failed_msg">Kopia zapasowa nieudana: %s</string>
+    <string name="apm_restore_failed_msg">Przywracanie nieudane: %s</string>
 </resources>

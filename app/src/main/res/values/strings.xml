@@ -337,6 +337,16 @@
     <string name="kpm_autoload_json_mode">JSON Mode</string>
     <string name="kpm_autoload_add_kpm">Add KPM</string>
     <string name="kpm_autoload_remove_kpm">Remove</string>
+    
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">Backup Modules</string>
+    <string name="apm_restore_title">Restore Modules</string>
+    <string name="apm_backup_success">Backup successful</string>
+    <string name="apm_restore_success">Restore successful</string>
+    <string name="apm_backup_failed">Backup failed</string>
+    <string name="apm_restore_failed">Restore failed</string>
+    <string name="apm_backup_failed_msg">Backup failed: %s</string>
+    <string name="apm_restore_failed_msg">Restore failed: %s</string>
 
     <!-- APM Bulk Install Strings -->
     <string name="apm_bulk_install_title">APM Bulk Install</string>
@@ -351,6 +361,8 @@
     <string name="apm_bulk_install_log_done">All operations completed.</string>
     <string name="apm_bulk_install_first_use_text">This feature allows you to install multiple modules at once. It is a quick install method suitable for modules that do not involve key operations during installation. For modules requiring volume key interactions, please use the standard installation.</string>
     <string name="apm_bulk_install_remove">Remove</string>
+    <string name="apm_first_use_title">Welcome to System Modules</string>
+    <string name="apm_first_use_text">Welcome to System Modules, this uses modules compatible with the Magisk ecosystem. In the future, support for Lua modules may be added. Click the button in the bottom right corner to install modules. You can also use the installer at the top to batch install modules. A feature to backup all modules with one click is also provided, but note that this solution may not be suitable for all modules, so you should make your own backups.</string>
 
     <string name="kpm_autoload_kpm_list_title">KPM Modules</string>
     <string name="kpm_autoload_no_kpm_added">No KPM modules added</string>

@@ -352,6 +352,8 @@
     <string name="apm_bulk_install_log_done">所有操作已完成。</string>
     <string name="apm_bulk_install_first_use_text">这个功能允许你一次性刷入多个模块,属于快速刷入,适合刷一些过程中没有涉及按键操作的模块,涉及点按音量键等操作的请使用普通刷入</string>
     <string name="apm_bulk_install_remove">移除</string>
+    <string name="apm_first_use_title">欢迎使用系统模块</string>
+    <string name="apm_first_use_text">欢迎使用系统模块，这里使用的是兼容Magisk生态的模块，未来可能会加入对Lua模块的支持，点击右下角的按钮可以安装模块，你也可以使用顶部的安装器批量安装模块，还提供了一个功能一键备份全部模块，但是注意这种方案不一定适用全部模块，还是自己多加备份</string>
     <string name="kpm_autoload_add_kpm">添加KPM</string>
     <string name="kpm_autoload_remove_kpm">删除</string>
     <string name="kpm_autoload_kpm_list_title">KPM模块列表</string>
@@ -366,4 +368,13 @@
 
     <string name="kpm_page_first_time_title">警告</string>
     <string name="kpm_page_first_time_message">内核模块是直接修改Boot的实现，它不像系统模块一样有很好的救砖机制，出问题只能进入Fastboot去修复。建议先加载模块没有问题再嵌入到Boot。如果是只能加载使用的模块，可以尝试使用自动KPM模块加载功能。如果你不了解内核模块，请不要使用本功能！</string>
+    <!-- Module Backup/Restore Strings -->
+    <string name="apm_backup_title">备份模块</string>
+    <string name="apm_restore_title">恢复模块</string>
+    <string name="apm_backup_success">备份成功</string>
+    <string name="apm_restore_success">恢复成功</string>
+    <string name="apm_backup_failed">备份失败</string>
+    <string name="apm_restore_failed">恢复失败</string>
+    <string name="apm_backup_failed_msg">备份失败：%s</string>
+    <string name="apm_restore_failed_msg">恢复失败：%s</string>
 </resources>
